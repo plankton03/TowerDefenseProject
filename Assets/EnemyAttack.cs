@@ -7,7 +7,7 @@ using UnityEngine.Events;
 public class EnemyAttack : MonoBehaviour
 {
 
-    public Health health;
+    public Health targetHealth;
     public int damage;
     public float waitTime;
 
@@ -15,9 +15,9 @@ public class EnemyAttack : MonoBehaviour
 
     public IEnumerator Attacking()
     {
-        while (health != null)
+        while (targetHealth != null)
         {
-            health.takeDamage(damage);
+            targetHealth.takeDamage(damage);
             yield return new WaitForSeconds(waitTime);
         }
         onTargetDeath.Invoke();
