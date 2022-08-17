@@ -20,7 +20,6 @@ public class Wave : MonoBehaviour
 
     private List<Enemy> enemiesAlive = new List<Enemy>();
     
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -28,7 +27,6 @@ public class Wave : MonoBehaviour
 
     public IEnumerator SpawnEnemies()
     {
-
         foreach (var enemy in enemies)
         {
             enemiesAlive.Add(Instantiate(enemy,spawnLocation.position,Quaternion.identity));

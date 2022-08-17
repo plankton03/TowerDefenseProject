@@ -7,30 +7,35 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform goal;
     public UnityEngine.AI.NavMeshAgent agent;
-
     public float minimumDistance;
+    public bool isArrived = false;
 
-    public UnityEvent onReach;
-    // Start is called before the first frame update
+ 
     void Start()
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        
     }
 
-    public void SetGoal(Transform goal)
+    private void OnEnable()
     {
-        this.goal = goal;
+        isArrived = false;
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         agent.SetDestination(goal.position);
+
+        CheckArrival();
+    }
+
+    void CheckArrival()
+    { 
         if ((transform.position - goal.position).magnitude <= minimumDistance )
         {
             agent.ResetPath();
-            onReach.Invoke();
+
+            isArrived = true;
         }
     }
 }

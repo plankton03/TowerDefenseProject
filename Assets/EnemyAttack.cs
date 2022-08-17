@@ -11,7 +11,7 @@ public class EnemyAttack : MonoBehaviour
     public int damage;
     public float waitTime;
 
-    public UnityEvent onTargetDeath;
+    public bool isAttackDone = false;
 
     public IEnumerator Attacking()
     {
@@ -20,7 +20,7 @@ public class EnemyAttack : MonoBehaviour
             targetHealth.takeDamage(damage);
             yield return new WaitForSeconds(waitTime);
         }
-        onTargetDeath.Invoke();
+        isAttackDone = true;
         yield return null;
     }
 
@@ -34,13 +34,11 @@ public class EnemyAttack : MonoBehaviour
         StopCoroutine(Attacking());
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
         
