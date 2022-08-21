@@ -39,7 +39,7 @@ public class EnemyBehaviorManager : MonoBehaviour
         currentState = State.Move;
         enemyMovement.enabled = true;
 
-        while (!enemyMovement.isArrived)
+        while (!enemyMovement.isArrived && enemyMovement.goal)
         {
             yield return null;
         }
@@ -63,6 +63,8 @@ public class EnemyBehaviorManager : MonoBehaviour
 
         DecideNextBahavior();
     }
+
+
 
     private void DecideNextBahavior()
     {
@@ -88,7 +90,7 @@ public class EnemyBehaviorManager : MonoBehaviour
             }
             else
             {
-                currentState = State.Dead;
+                StartCoroutine(Idle());
             }
         }
         else if (currentState == State.Attack)
