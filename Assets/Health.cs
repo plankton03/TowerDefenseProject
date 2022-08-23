@@ -22,6 +22,11 @@ public class Health : MonoBehaviour
         
     }
 
+    public float healthRatio
+    {
+        get { return healthPoints * 1.0f / maxHealth; }
+    }
+
     public void takeDamage(int damage)
     {
         healthPoints -= damage;
