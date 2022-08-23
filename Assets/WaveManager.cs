@@ -6,14 +6,16 @@ public class WaveManager : MonoBehaviour
 {
 
     public Wave[] waves;
+    public int currentWave;
 
     public IEnumerator StartWaves()
     {
-        foreach (var wave in waves)
+        for ( currentWave = 0; currentWave < waves.Length; currentWave++)
         {
+            var wave = waves[currentWave];
             yield return new WaitForSeconds(wave.startDelay);
-            
-            
+
+
             IEnumerator spawnEnemies = wave.SpawnEnemies();
             while (spawnEnemies.MoveNext())
             {
@@ -21,11 +23,11 @@ public class WaveManager : MonoBehaviour
             }
 
 
-            IEnumerator Checker  = wave.CheckEnemiesAlive();
-            while(Checker.MoveNext())
+            IEnumerator Checker = wave.CheckEnemiesAlive();
+            while (Checker.MoveNext())
                 yield return Checker.Current;
-
         }
+
         yield return null;
     }
 

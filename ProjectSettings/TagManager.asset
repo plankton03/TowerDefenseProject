@@ -6,6 +6,8 @@ TagManager:
   tags:
   - EnemyInfo
   - Enemy
+  - TargetArea
+  - WaveManager
   layers:
   - Default
   - TransparentFX
