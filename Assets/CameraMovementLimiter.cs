@@ -20,42 +20,42 @@ public class CameraMovementLimiter : MonoBehaviour
     private void LimitCameraMovement()
     {
 
-        Vector3 newPosition = new Vector3();
+        Vector3 finalScale = limiter.localScale / 2;
 
-        if (transform.position.x > (limiter.position.x + limiter.localScale.x))
+        if (transform.position.x > (limiter.position.x + finalScale.x))
         {
-            transform.position = new Vector3(limiter.position.x + limiter.localScale.x ,
+            transform.position = new Vector3(limiter.position.x + finalScale.x ,
                 transform.position.y,transform.position.z) ;
         }
 
-        if (transform.position.y > (limiter.position.y + limiter.localScale.y))
+        if (transform.position.y > (limiter.position.y + finalScale.y))
         {
             transform.position = new Vector3(transform.position.x,
-                limiter.position.y + limiter.localScale.y,transform.position.z) ;
+                limiter.position.y + finalScale.y,transform.position.z) ;
         }
 
-        if (transform.position.z > (limiter.position.z + limiter.localScale.z))
+        if (transform.position.z > (limiter.position.z + finalScale.z))
         {
             transform.position = new Vector3(transform.position.x,
-                transform.position.y,limiter.position.z + limiter.localScale.z) ;
+                transform.position.y,limiter.position.z + finalScale.z) ;
         }
 
-        if (transform.position.x < (limiter.position.x - limiter.localScale.x))
+        if (transform.position.x < (limiter.position.x - finalScale.x))
         {
-            transform.position = new Vector3(limiter.position.x - limiter.localScale.x ,
+            transform.position = new Vector3(limiter.position.x - finalScale.x ,
                 transform.position.y,transform.position.z) ;
         }
 
-        if (transform.position.y < (limiter.position.y - limiter.localScale.y))
+        if (transform.position.y < (limiter.position.y - finalScale.y))
         {
             transform.position = new Vector3(transform.position.x,
-                limiter.position.y - limiter.localScale.y,transform.position.z) ;
+                limiter.position.y - finalScale.y,transform.position.z) ;
         }
 
-        if (transform.position.z < (limiter.position.z - limiter.localScale.z))
+        if (transform.position.z < (limiter.position.z - finalScale.z))
         {
             transform.position = new Vector3(transform.position.x,
-                transform.position.y,limiter.position.z - limiter.localScale.z) ;
+                transform.position.y,limiter.position.z - finalScale.z) ;
         }
     }
 }

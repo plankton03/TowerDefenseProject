@@ -30,9 +30,10 @@ public class MachinegunAttackEnemy : BaseAttackEnemy
 
 
 
-    public Health currentEnemy{
-    
-        get { return (enemyHealths.Count >0  ) ? enemyHealths[0]: null; }
+    public Health currentEnemy
+    {
+
+        get { return (enemyHealths.Count > 0) ? enemyHealths[0] : null; }
         private set { enemyHealths[0] = value; }
     }
 
@@ -50,8 +51,10 @@ public class MachinegunAttackEnemy : BaseAttackEnemy
 
             //enemyHealths[0].takeDamage(damage);
             currentEnemy.takeDamage(damage);
-            SendMessage("OnDamage",currentEnemy.transform);
 
+            SendMessage("OnDamage", currentEnemy.transform);
+            if (currentEnemy.healthRatio <= 0)
+                enemyHealths.Remove(currentEnemy);
             yield return new WaitForSeconds(cooldownTime);
         }
 

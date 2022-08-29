@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
         healthPoints -= damage;
         if (healthPoints <= 0)
         {
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 

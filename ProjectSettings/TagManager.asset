@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - TargetArea
   - WaveManager
+  - TowerBase
   layers:
   - Default
   - TransparentFX

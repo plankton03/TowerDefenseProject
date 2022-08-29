@@ -9,7 +9,7 @@ public class TeslaTowerEffects : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        GetComponentInParent<TeslaAttackEnemy>().OnAttackenemy.AddListener(OnAttack);
     }
 
     void Update()

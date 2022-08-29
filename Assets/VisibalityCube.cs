@@ -16,9 +16,10 @@ public class VisibalityCube : MonoBehaviour
         
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
-        Gizmos.DrawCube(transform.position,transform.localScale);
+        Gizmos.DrawWireCube(transform.position,transform.localScale);
+        
     }
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TeslaAttackEnemy : BaseAttackEnemy
 {
@@ -13,13 +14,13 @@ public class TeslaAttackEnemy : BaseAttackEnemy
 
     private List<Health> enemyHealths = new List<Health>();
 
-    private TeslaTowerEffects towerEffects;
+
+    public UnityEvent<Transform> OnAttackenemy;
 
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(ApplyPeriodDamage());
-        towerEffects = gameObject.GetComponentInChildren<TeslaTowerEffects>();
     }
 
     IEnumerator ApplyPeriodDamage()
@@ -32,7 +33,7 @@ public class TeslaAttackEnemy : BaseAttackEnemy
             for (int i = 0; i < enemyHealths.Count; i++)
             {
                 enemyHealths[i].takeDamage(damage);
-                towerEffects.OnAttack(enemyHealths[i].transform);
+                OnAttackenemy.Invoke(enemyHealths[i].transform);
             }
             //towerEffects.OnAttack(enemyHealths.Select(EH => EH.transform).ToArray());
             yield return new WaitForSeconds(cooldownTime);
