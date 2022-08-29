@@ -24,37 +24,38 @@ public class CameraMovementLimiter : MonoBehaviour
 
         if (transform.position.x > (limiter.position.x + limiter.localScale.x))
         {
-            newPosition += (limiter.position.x + limiter.localScale.x) * Vector3.right;
+            transform.position = new Vector3(limiter.position.x + limiter.localScale.x ,
+                transform.position.y,transform.position.z) ;
         }
 
         if (transform.position.y > (limiter.position.y + limiter.localScale.y))
         {
-            newPosition += (limiter.position.y + limiter.localScale.y) * Vector3.up;
+            transform.position = new Vector3(transform.position.x,
+                limiter.position.y + limiter.localScale.y,transform.position.z) ;
         }
 
         if (transform.position.z > (limiter.position.z + limiter.localScale.z))
         {
-            newPosition += (limiter.position.z + limiter.localScale.z) * Vector3.forward;
+            transform.position = new Vector3(transform.position.x,
+                transform.position.y,limiter.position.z + limiter.localScale.z) ;
         }
 
         if (transform.position.x < (limiter.position.x - limiter.localScale.x))
         {
-            newPosition += (limiter.position.x - limiter.localScale.x) * Vector3.right;
+            transform.position = new Vector3(limiter.position.x - limiter.localScale.x ,
+                transform.position.y,transform.position.z) ;
         }
 
         if (transform.position.y < (limiter.position.y - limiter.localScale.y))
         {
-            newPosition += (limiter.position.y - limiter.localScale.y) * Vector3.up;
+            transform.position = new Vector3(transform.position.x,
+                limiter.position.y - limiter.localScale.y,transform.position.z) ;
         }
 
         if (transform.position.z < (limiter.position.z - limiter.localScale.z))
         {
-            newPosition += (limiter.position.z - limiter.localScale.z) * Vector3.forward;
-        }
-
-        if (newPosition != Vector3.zero)
-        {
-            transform.position = newPosition;
+            transform.position = new Vector3(transform.position.x,
+                transform.position.y,limiter.position.z - limiter.localScale.z) ;
         }
     }
 }
